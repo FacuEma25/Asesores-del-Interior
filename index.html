@@ -13,7 +13,7 @@
 <body>
     <header id="inicio">
         <div class="menu">
-            <a href="#" class="logo">Logo</a>
+            <img class="img-logo" src="img/asesores-logo.png" alt="">
             <input type="checkbox" id="menu">
             <label for="menu">
                 <img src="imagenes/menu-btn.png" class="menu-icon" alt="">
@@ -90,7 +90,7 @@
             </div>
 
             <div class="nos-info">
-                <h2>Lorem, ipsum dolor.</h2>
+                <h2>Nuestros integrantes</h2>
                 <p class="nos-subtittle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint nemo
                     assumenda
                     voluptatem praesentium, atque tempora eaque commodi placeat ipsam cum.</p>
@@ -112,12 +112,6 @@
                         <h4>Emma Nouse</h4>
                         <p>Publicista</p>
                     </div>
-
-                    <div class="integrantes">
-                        <img src="img/empleados-2.png" alt="imagen de ejemplo">
-                        <h4>Emma Nouse</h4>
-                        <p>Publicista</p>
-                    </div>
                 </div>
 
             </div>
@@ -128,105 +122,181 @@
 
     <section class="exp"></section>
 
-    <section class="coberturas-container container-1">
-        <h2>Nuestras coberturas</h2>
-        <div class="coberturas-content">
-            <div class="coberturas">
-                <div class="card-inner">
-                    <!-- FRONT -->
-                    <div class="card-front front-1">
-                        <i class="fa-solid fa-tooth"></i>
-                        <h2>Cobertura 1</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <!-- BACK -->
-                    <div class="card-back back-1">
-                        <h2>Contacto</h2>
-                        <p>📞 351 123 4567</p>
-                        <p>✉ contacto@seguro.com</p>
-                        <a href="#" class="btn-contacto">Contactar</a>
-                    </div>
-                </div>
+    <section class="coberturas container-1" aria-label="Coberturas">
+        <div class="coberturas__container">
+            <div>
+                <h2>Coberturas</h2>
+                <p class="cober-aclaracion">Señalá o tocá una cobertura para ver el detalle.</p>
+                <p class="cober-aclaracion-2">Las ventajas al contratar con nosotros son:</p>
+                <p class="cober-item">Asesoramiento personalizado</p>
+                <p class="cober-item">Comparación entre compañías</p>
+                <p class="cober-item">Acompañamiento en siniestros</p>
+                <p class="cober-item">Optimización de costos</p>
+                <p class="cober-item">Actualización permanente</p>
+                <p class="cober-item">Gestión integral</p>
+
             </div>
 
-            <div class="coberturas">
-                <div class="card-inner">
-                    <!-- FRONT -->
-                    <div class="card-front front-1">
-                        <i class="fa-solid fa-tooth"></i>
-                        <h2>Cobertura 1</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <!-- BACK -->
-                    <div class="card-back back-1">
-                        <h2>Contacto</h2>
-                        <p>📞 351 123 4567</p>
-                        <p>✉ contacto@seguro.com</p>
-                        <a href="#" class="btn-contacto">Contactar</a>
-                    </div>
-                </div>
-            </div>
+            <div class="coberturas__grid" id="coberturasGrid">
+                <!-- 1: Industria (arriba izq) -->
+                <article class="card" data-id="1" data-corner="tl" tabindex="0">
+                    <div class="card__inner">
+                        <div class="card__face card__front">
+                            <img src="img/cobertura-card-front-1.png" alt="Industria - frente" />
+                        </div>
 
-            <div class="coberturas">
-                <div class="card-inner">
-                    <!-- FRONT -->
-                    <div class="card-front front-1">
-                        <i class="fa-solid fa-tooth"></i>
-                        <h2>Cobertura 1</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <!-- BACK -->
-                    <div class="card-back back-1">
-                        <h2>Contacto</h2>
-                        <p>📞 351 123 4567</p>
-                        <p>✉ contacto@seguro.com</p>
-                        <a href="#" class="btn-contacto">Contactar</a>
-                    </div>
-                </div>
-            </div>
+                        <div class="card__face card__back">
+                            <img src="img/cobertura-card-back-1.png" alt="Industria - reverso" />
 
-            <div class="coberturas">
-                <div class="card-inner">
-                    <!-- FRONT -->
-                    <div class="card-front front-1">
-                        <i class="fa-solid fa-tooth"></i>
-                        <h2>Cobertura 1</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                            <div class="card__content">
+                                <h3>Industria</h3>
+                                <ul>
+                                    <li>Todo riesgo operativo</li>
+                                    <li>Incendio</li>
+                                    <li>Caución para la obra pública y privada</li>
+                                    <li>RC praxis institucional e individual</li>
+                                </ul>
+                                <a class="card__btn" href="#" role="button">Más información</a>
+                            </div>
+                        </div>
                     </div>
-                    <!-- BACK -->
-                    <div class="card-back back-1">
-                        <h2>Contacto</h2>
-                        <p>📞 351 123 4567</p>
-                        <p>✉ contacto@seguro.com</p>
-                        <a href="#" class="btn-contacto">Contactar</a>
+
+                    <div class="card__dim" aria-hidden="true"></div>
+                </article>
+
+                <!-- 2: Comercio (arriba der) -->
+                <article class="card" data-id="2" data-corner="tr" tabindex="0">
+                    <div class="card__inner">
+                        <div class="card__face card__front">
+                            <img src="img/cobertura-card-front-2.png" alt="Industria - frente" />
+                        </div>
+
+                        <div class="card__face card__back">
+                            <img src="img/cobertura-card-back-2.png" alt="Industria - reverso" />
+
+                            <div class="card__content">
+                                <h3>Comercio</h3>
+                                <ul>
+                                    <li>Integral</li>
+                                    <li>ART</li>
+                                    <li>Consorcios</li>
+                                    <li>Accidentes personales</li>
+                                    <li>Robo</li>
+                                    <li>Agencia de turismo</li>
+                                    <li>Shows / espectáculos</li>
+                                    <li>Eventos deportivos</li>
+                                </ul>
+                                <a class="card__btn" href="#" role="button">Más información</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="card__dim" aria-hidden="true"></div>
+                </article>
+
+                <!-- 3: Particular (abajo izq) -->
+                <article class="card" data-id="3" data-corner="bl" tabindex="0">
+                    <div class="card__inner">
+                        <div class="card__face card__front">
+                            <img src="img/cobertura-card-front-3.png" alt="Industria - frente" />
+                        </div>
+
+                        <div class="card__face card__back">
+                            <img src="img/cobertura-card-back-3.png" alt="Industria - reverso" />
+
+                            <div class="card__content">
+                                <h3>Particular</h3>
+                                <ul>
+                                    <li>Hogar</li>
+                                    <li>Medicina prepaga</li>
+                                    <li>Bicicleta</li>
+                                    <li>Microseguros</li>
+                                </ul>
+                                <a class="card__btn" href="#" role="button">Más información</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card__dim" aria-hidden="true"></div>
+                </article>
+
+                <!-- 4: Vehículo (abajo der) -->
+                <article class="card" data-id="4" data-corner="br" tabindex="0">
+                    <div class="card__inner">
+                        <div class="card__face card__front">
+                            <img src="img/cobertura-card-front-4.png" alt="Industria - frente" />
+                        </div>
+
+                        <div class="card__face card__back">
+                            <img src="img/cobertura-card-back-4.png" alt="Industria - reverso" />
+
+                            <div class="card__content">
+                                <h3>Vehículo</h3>
+                                <ul>
+                                    <li>Particular</li>
+                                    <li>Comercial</li>
+                                    <li>Maquinaria</li>
+                                </ul>
+                                <a class="card__btn" href="#" role="button">Más información</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card__dim" aria-hidden="true"></div>
+                </article>
             </div>
         </div>
-
     </section>
 
     <section class="compañias">
-        <h2>Nuestras compañias</h2>
+        <h2>COMPAÑÍAS LIDERES QUE NOS ACOMPAÑAN</h2>
         <div class="logos-container">
             <div class="logos-track">
-                <!-- Logos originales -->
-                <div class="logo"><img src="img/logo.png" alt="Logo 1"></div>
-                <div class="logo"><img src="img/logo.png" alt="Logo 2"></div>
-                <div class="logo"><img src="img/logo.png" alt="Logo 3"></div>
-                <div class="logo"><img src="img/logo.png" alt="Logo 4"></div>
-                <div class="logo"><img src="img/logo.png" alt="Logo 5"></div>
-
-                <!-- Duplicados para efecto infinito -->
-                <div class="logo"><img src="img/logo.png" alt="Logo 1"></div>
-                <div class="logo"><img src="img/logo.png" alt="Logo 2"></div>
-                <div class="logo"><img src="img/logo.png" alt="Logo 3"></div>
-                <div class="logo"><img src="img/logo.png" alt="Logo 4"></div>
-                <div class="logo"><img src="img/logo.png" alt="Logo 5"></div>
+                <div class="logo"><img src="img/1- Prudencia.png" alt=""></div>
+                <div class="logo"><img src="img/2- Triunfo.png" alt=""></div>
+                <div class="logo"><img src="img/3-Sancor.png" alt=""></div>
+                <div class="logo"><img src="img/4-Prevencion.png" alt=""></div>
+                <div class="logo"><img src="img/5-Prevencion-ART.png" alt=""></div>
+                <div class="logo"><img src="img/6-Rio-Uruguay.png" alt=""></div>
+                <div class="logo"><img src="img/7-Banco-del-Sol.png" alt=""></div>
+                <div class="logo"><img src="img/8-Afianzadora.png" alt=""></div>
+                <div class="logo"><img src="img/9-Provincia-ART.png" alt=""></div>
             </div>
-
         </div>
+    </section>
 
+
+    <section class="compañias-2">
+        <h2>COMPAÑÍAS LIDERES QUE NOS ACOMPAÑAN</h2>
+        <div class="logos-content">
+            <div class="logos">
+                <div class="content-1">
+                    <div></div>
+                    <div class="logo1"><img src="img/1- Prudencia.png" alt=""></div>
+                    <div class="logo1"><img src="img/2- Triunfo.png" alt=""></div>
+                    <div class="logo1"><img src="img/3-Sancor.png" alt=""></div>
+                    <div></div>
+                </div>
+
+                <div class="content-2">
+                    <div></div>
+                    <div class="logo1"><img src="img/4-Prevencion.png" alt=""></div>
+                    <div></div>
+                    <div class="logo1"><img src="img/5-Prevencion-ART.png" alt=""></div>
+                    <div></div>
+                    <div class="logo1"><img src="img/6-Rio-Uruguay.png" alt=""></div>
+                    <div></div>
+                </div>
+
+                <div class="content-3">
+                    <div></div>
+                    <div class="logo1"><img src="img/7-Banco-del-Sol.png" alt=""></div>
+                    <div class="logo1"><img src="img/8-Afianzadora.png" alt=""></div>
+                    <div class="logo1"><img src="img/9-Provincia-ART.png" alt=""></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="reseñas-contender container-1">
@@ -545,10 +615,17 @@
     </section>
 
     <footer>
-        <p class="footer-text-1">2024 Emprende con Cande - All Rights Reserved</p>
+        <p>2024 Emprende con Cande - All Rights Reserved</p>
         <p>Pagina creada por <b><a href="https://emprendeconcande.com/">Emprende con Cande</a></b></p>
     </footer>
 
+    <a href="https://wa.me/5493511234567?text=Hola%20quiero%20más%20información" class="whatsapp-float wpp"
+        target="_blank" rel="noopener noreferrer" aria-label="Escribinos por WhatsApp">
+        <svg viewBox="0 0 32 32" width="28" height="28" fill="white">
+            <path
+                d="M19.11 17.39c-.29-.14-1.71-.84-1.97-.94-.26-.1-.45-.14-.64.14-.19.29-.74.94-.91 1.13-.17.19-.34.21-.63.07-.29-.14-1.23-.45-2.34-1.43-.86-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.12-.59.13-.13.29-.34.43-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.29-1 1-1 2.43 0 1.43 1.02 2.81 1.16 3 .14.19 2.01 3.07 4.87 4.31.68.29 1.2.46 1.61.59.68.21 1.3.18 1.79.11.55-.08 1.71-.7 1.95-1.37.24-.67.24-1.24.17-1.37-.07-.13-.26-.21-.55-.36z" />
+        </svg>
+    </a>
     <script src="main.js"></script>
 </body>
 

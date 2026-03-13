@@ -2,10 +2,10 @@ const faqItems = document.querySelectorAll(".faq-item");
 const track = document.querySelector('.logos-track');
 
 
+/* Menu transparente */
+
 
 /*FAQ*/
-
-
 faqItems.forEach(item => {
     const button = item.querySelector(".faq-question");
 
@@ -199,3 +199,65 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* FIN OPINIONES */
+
+/* Coberturas */
+(() => {
+  const grid = document.getElementById("coberturasGrid");
+  const cards = Array.from(grid.querySelectorAll(".card"));
+
+  let activeId = null;
+
+  const applyState = () => {
+    cards.forEach((c) => {
+      const id = c.dataset.id;
+      const isActive = activeId === id;
+      const isDim = activeId !== null && !isActive;
+
+      c.classList.toggle("is-active", isActive);
+      c.classList.toggle("is-dim", isDim);
+    });
+  };
+
+  const setActive = (id) => {
+    activeId = id;
+    applyState();
+  };
+
+  const clearActive = () => {
+    activeId = null;
+    applyState();
+  };
+
+  // Hover (desktop)
+  cards.forEach((card) => {
+    card.addEventListener("mouseenter", () => setActive(card.dataset.id));
+    card.addEventListener("focusin", () => setActive(card.dataset.id));
+  });
+
+  grid.addEventListener("mouseleave", clearActive);
+  grid.addEventListener("focusout", (e) => {
+    // si el foco se va fuera del grid, limpiamos
+    if (!grid.contains(e.relatedTarget)) clearActive();
+  });
+
+  // Click/tap (mobile): toggle
+  cards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      // Si clickea el botón, dejá navegar
+      const isBtn = e.target.closest(".card__btn");
+      if (isBtn) return;
+
+      const id = card.dataset.id;
+      activeId = activeId === id ? null : id;
+      applyState();
+    });
+  });
+
+  // Click afuera del grid: cerrar
+  document.addEventListener("click", (e) => {
+    if (!grid.contains(e.target)) clearActive();
+  });
+
+  // Estado inicial
+  applyState();
+})();
