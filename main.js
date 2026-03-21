@@ -319,13 +319,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!menuCheckbox || !navLinks.length) return;
 
-    const closeMenu = () => {
-        menuCheckbox.checked = false;
-    };
-
     navLinks.forEach(link => {
         link.addEventListener("click", () => {
-            closeMenu();
+            /* 
+               Espera un instante para que el navegador
+               haga primero la navegación a la sección
+               y recién después cierre el menú
+            */
+            setTimeout(() => {
+                menuCheckbox.checked = false;
+            }, 200);
         });
     });
 });
