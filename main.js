@@ -303,3 +303,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
+
+
+/* CORECCION */
+

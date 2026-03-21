@@ -1604,9 +1604,9 @@ span {
         padding: 60px 0 40px;
     }
 
-    /* .reseñas-wrapper {
+    .reseñas-wrapper {
         padding: 0 36px;
-    } */
+    }
 
     .prev {
         left: 0;
@@ -1696,9 +1696,9 @@ span {
     }
 
     /* Reseñas */
-    /* .reseñas-wrapper {
+    .reseñas-wrapper {
         padding: 0 28px;
-    } */
+    }
 
     .reseñas-btn {
         width: 40px;
@@ -1906,5 +1906,28 @@ span {
     .whatsapp-float {
         width: 48px;
         height: 48px;
+    }
+}
+
+/* =========================================
+   MEJORA TOUCH EN BOTONES DE RESEÑAS
+========================================= */
+.reseñas-btn {
+    touch-action: manipulation;
+    pointer-events: auto;
+}
+
+/* En mobile los metemos un poco hacia adentro */
+@media (max-width: 768px) {
+    .reseñas-wrapper {
+        padding: 0 50px;
+    }
+
+    .prev {
+        left: 5px;
+    }
+
+    .next {
+        right: 5px;
     }
 }
