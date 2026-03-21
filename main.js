@@ -309,3 +309,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* CORECCION */
 
+/* =========================================
+   MENU MOBILE
+   Cierra el menú cuando tocás una sección
+========================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const menuCheckbox = document.getElementById("menu");
+    const navLinks = document.querySelectorAll(".menu .navbar a");
+
+    if (!menuCheckbox || !navLinks.length) return;
+
+    const closeMenu = () => {
+        menuCheckbox.checked = false;
+    };
+
+    navLinks.forEach(link => {
+        /* click normal */
+        link.addEventListener("click", closeMenu);
+
+        /* touch real en celular */
+        link.addEventListener("touchstart", closeMenu, { passive: true });
+    });
+
+    /* por si cambia el hash y navega a la sección */
+    window.addEventListener("hashchange", closeMenu);
+});
