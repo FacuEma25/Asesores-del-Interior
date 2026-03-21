@@ -117,7 +117,7 @@ img {
     gap: 50px;
 }
 
-.menu .img-logo{
+.menu .img-logo {
     width: 200px;
 }
 
@@ -430,7 +430,7 @@ main .meta-text .meta-items::before {
   margin: 0 auto;
 } */
 
-.coberturas__container{
+.coberturas__container {
     display: grid;
     grid-template-columns: 40% 60%;
     align-items: center;
@@ -1180,7 +1180,10 @@ footer p {
 }
 
 
-
+/* LOGOS PARA CEL */
+.compañias-3 {
+    display: none;
+}
 
 
 /* =========================================================
@@ -1206,7 +1209,14 @@ iframe {
 }
 
 /* Evita que textos o botones largos rompan el layout */
-h1, h2, h3, h4, p, a, li, span {
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+li,
+span {
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
@@ -1357,7 +1367,7 @@ h1, h2, h3, h4, p, a, li, span {
         gap: 28px;
     }
 
-    .coberturas__container > div:first-child {
+    .coberturas__container>div:first-child {
         text-align: center;
     }
 
@@ -1454,7 +1464,7 @@ h1, h2, h3, h4, p, a, li, span {
     }
 
     /* Cuando se activa el checkbox, aparece el menú */
-    #menu:checked ~ .navbar {
+    #menu:checked~.navbar {
         display: block;
     }
 
@@ -1830,6 +1840,41 @@ h1, h2, h3, h4, p, a, li, span {
     footer a {
         font-size: 0.9rem;
     }
+
+    .compañias-2 {
+        display: none;
+    }
+
+    .compañias-3 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: var(--claro);
+        padding: 25px 0;
+    }
+
+    .compañias-3 .logos-3 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .compañias-3 h2 {
+        padding-bottom: 25px 0;
+        color: var(--principal);
+    }
+
+    .logos-3 .logo3 {
+        flex: 0 0 auto;
+        width: 180px;
+        margin: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 }
 
 /* =========================
