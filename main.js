@@ -324,13 +324,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     navLinks.forEach(link => {
-        /* click normal */
-        link.addEventListener("click", closeMenu);
-
-        /* touch real en celular */
-        link.addEventListener("touchstart", closeMenu, { passive: true });
+        link.addEventListener("click", () => {
+            closeMenu();
+        });
     });
-
-    /* por si cambia el hash y navega a la sección */
-    window.addEventListener("hashchange", closeMenu);
 });
