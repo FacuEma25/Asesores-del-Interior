@@ -128,7 +128,7 @@ img {
 
 .menu .navbar ul li a {
     font-size: 15px;
-    padding: 20px;
+    padding: 20px 10px;
     color: var(--principal);
     display: block;
 }
@@ -393,8 +393,8 @@ main .meta-text .meta-items::before {
 }
 
 .integrantes img {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #3b82f6;
@@ -1179,138 +1179,687 @@ footer p {
     }
 }
 
-/* RESPONSIVE */
-/*FAQ*/
+
+
+
+
+/* =========================================================
+   RESPONSIVE GENERAL
+   Este bloque corrige desbordes horizontales, reorganiza
+   secciones y adapta la web a tablet y mobile.
+   Pegarlo al FINAL del CSS para que pise estilos previos.
+========================================================= */
+
+/* Evita que cualquier elemento genere scroll horizontal */
+html,
+body {
+    overflow-x: hidden;
+}
+
+/* Hace que imágenes, videos e iframes nunca se salgan */
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Evita que textos o botones largos rompan el layout */
+h1, h2, h3, h4, p, a, li, span {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Hace que el ancho del contenedor sea más flexible */
+.container-1 {
+    width: min(85%, 1200px);
+}
+
+/* =========================
+   BREAKPOINT <= 1280px
+   Ajustes suaves para laptop
+========================= */
+@media (max-width: 1280px) {
+
+    /* El hero reduce un poco sus títulos */
+    .tittle-header .text-header h1 {
+        font-size: 3.4rem;
+    }
+
+    .tittle-header .text-header .eslogan {
+        font-size: 1.6rem;
+    }
+
+    /* Ajusta sección meta */
+    main .meta-text h2 {
+        font-size: 2.5rem;
+    }
+
+    main .meta-text .meta-sub,
+    main .meta-text .meta-items p,
+    .meta-text .meta-aclaracion p {
+        font-size: 1.3rem;
+    }
+
+    .span-num {
+        font-size: 2.5rem;
+    }
+
+    /* Ajusta nosotros */
+    .nos-info h2 {
+        font-size: 2.2rem;
+    }
+
+    /* Ajusta coberturas */
+    .coberturas__container {
+        grid-template-columns: 45% 55%;
+        gap: 24px;
+    }
+
+    .coberturas__container h2 {
+        font-size: 3rem;
+    }
+
+    /* Ajusta botones del carrusel reseñas */
+    .prev {
+        left: -20px;
+    }
+
+    .next {
+        right: -20px;
+    }
+}
+
+/* =========================
+   BREAKPOINT <= 1024px
+   Tablet horizontal / laptop chica
+   Cuando algo no entra bien, pasamos
+   de dos columnas a una debajo de otra
+========================= */
+@media (max-width: 1024px) {
+
+    /* El menú respira mejor */
+    .menu {
+        padding: 14px 24px;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .menu .img-logo {
+        width: 170px;
+    }
+
+    /* Hero más contenido */
+    header,
+    .tittle-header {
+        min-height: 85vh;
+        height: auto;
+    }
+
+    .tittle-header {
+        padding: 120px 24px 60px;
+    }
+
+    .tittle-header .text-header h1 {
+        font-size: 3rem;
+    }
+
+    .tittle-header .text-header .eslogan {
+        font-size: 1.4rem;
+    }
+
+    .tittle-header .text-header .text-tittle {
+        max-width: 680px;
+        font-size: 1rem;
+    }
+
+    /* META: de 2 columnas a 1 columna */
+    main {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 80px 0;
+    }
+
+    main .meta-img {
+        order: 1;
+    }
+
+    main .meta-text {
+        order: 2;
+        text-align: center;
+    }
+
+    main .meta-img img {
+        width: min(70%, 500px);
+    }
+
+    /* Nosotros: imagen arriba, texto abajo */
+    .nos .nos-container,
+    .nos-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .nosotros-img img {
+        max-width: min(70%, 450px);
+    }
+
+    .integrantes-content {
+        justify-content: center;
+    }
+
+    /* Coberturas: texto arriba, cards abajo */
+    .coberturas__container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .coberturas__container > div:first-child {
+        text-align: center;
+    }
+
+    .coberturas__container .cober-item {
+        text-align: left;
+        display: inline-block;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .coberturas__grid {
+        max-width: 680px;
+    }
+
+    /* FAQ: una sola columna */
+    .faq-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .faq-img {
+        position: static;
+        top: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .faq-img img {
+        width: min(70%, 420px);
+    }
+
+    .contain h2,
+    .faq-title {
+        text-align: center;
+    }
+
+    /* Logos */
+    .compañias-2 h2 {
+        font-size: 1.2rem;
+        gap: 14px;
+        text-align: center;
+    }
+
+    .compañias-2 h2::before,
+    .compañias-2 h2::after {
+        max-width: 180px;
+    }
+
+    /* Footer mejor distribuido */
+    footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+}
+
+/* =========================
+   BREAKPOINT <= 768px
+   Tablet vertical
+   Acá ya empieza a sentirse mobile
+========================= */
 @media (max-width: 768px) {
+
+    /* Ajuste global del contenedor */
+    .container-1 {
+        width: min(90%, 1200px);
+    }
+
+    /* MENÚ MOBILE
+       Mostramos icono y ocultamos nav hasta abrir checkbox */
+    .menu {
+        padding: 12px 18px;
+        align-items: center;
+    }
+
+    .menu label {
+        display: block;
+        z-index: 100001;
+    }
+
+    .menu-icon {
+        width: 28px;
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--claro);
+        display: none;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        padding: 10px 0;
+    }
+
+    /* Cuando se activa el checkbox, aparece el menú */
+    #menu:checked ~ .navbar {
+        display: block;
+    }
+
+    .menu .navbar ul li {
+        float: none;
+        width: 100%;
+    }
+
+    .menu .navbar ul li a {
+        padding: 14px 22px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    /* Hero más chico */
+    .tittle-header {
+        padding: 120px 18px 50px;
+    }
+
+    .tittle-header .text-header h1 {
+        font-size: 2.4rem;
+    }
+
+    .tittle-header .text-header .eslogan {
+        font-size: 1.2rem;
+    }
+
+    .tittle-header .text-header .text-tittle {
+        max-width: 100%;
+        font-size: 0.95rem;
+    }
+
+    .tittle-header .text-header .botton {
+        font-size: 1.1rem;
+        padding: 12px 18px;
+    }
+
+    /* Meta */
+    main .meta-text h2 {
+        font-size: 2.2rem;
+    }
+
+    main .meta-text .meta-sub {
+        font-size: 1.1rem;
+    }
+
+    main .meta-text .meta-items {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    main .meta-text .meta-items p {
+        font-size: 1rem;
+    }
+
+    .span-num {
+        font-size: 2rem;
+    }
+
+    .meta-text .meta-aclaracion p {
+        font-size: 1.3rem;
+    }
+
+    /* Nosotros */
+    .nos {
+        padding: 70px 0 0;
+    }
+
+    .nos-info h2 {
+        font-size: 2rem;
+    }
+
+    .nos-subtittle {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .integrantes-content {
+        gap: 20px;
+    }
+
+    .integrantes img {
+        width: 130px;
+        height: 130px;
+    }
+
+    /* Coberturas:
+       si el círculo queda muy apretado, lo dejamos más chico */
+    .coberturas__container h2 {
+        font-size: 2.3rem;
+    }
+
+    .coberturas__container .cober-aclaracion-2 {
+        font-size: 1.3rem;
+    }
+
+    .coberturas__container .cober-item {
+        font-size: 1rem;
+    }
+
+    .coberturas__grid {
+        max-width: 560px;
+        margin-top: 10px;
+    }
+
+    .card__content h3 {
+        font-size: 0.95rem;
+    }
+
+    .card__content ul {
+        font-size: 0.78rem;
+    }
+
+    .card__btn {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+
+    /* Logos */
+    .compañias-2 {
+        padding: 60px 0;
+    }
+
+    .compañias-2 h2 {
+        white-space: normal;
+        line-height: 1.4;
+        font-size: 1rem;
+        padding: 0 16px;
+    }
+
+    .compañias-2 h2::before,
+    .compañias-2 h2::after {
+        max-width: 100px;
+    }
+
+    /* Reseñas */
+    .reseñas-contender .reseñas-tittle {
+        font-size: 2rem;
+        padding: 60px 0 40px;
+    }
+
+    .reseñas-wrapper {
+        padding: 0 36px;
+    }
+
+    .prev {
+        left: 0;
+    }
+
+    .next {
+        right: 0;
+    }
+
+    /* FAQ */
+    .faq {
+        padding: 60px 0;
+    }
+
     .faq-title {
         font-size: 1.8rem;
+        margin-bottom: 20px;
     }
 
     .faq-question {
         font-size: 1rem;
-        padding: 15px;
+        padding: 16px;
+    }
+
+    /* Contacto */
+    .contacto-section {
+        padding: 70px 0;
+    }
+
+    .contacto-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .contacto-card {
+        padding: 30px 22px;
+        border-radius: 28px 18px;
     }
 }
-
 
 /* =========================
-   MOBILE BASE
+   BREAKPOINT <= 600px
+   Mobile grande
+   Acá ya evitamos layouts apretados
 ========================= */
+@media (max-width: 600px) {
 
-@media (max-width: 576px) {
-    .container-1 {
-        width: 90%;
-        margin: auto;
-    }
-
-    /* HERO / MAIN */
-    main {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        padding: 70px 0;
-        text-align: center;
-    }
-
-    .meta-img img {
-        width: 100%;
-    }
-
-    /* META ITEMS EN COLUMNA */
-    .meta-text .meta-items {
-        display: flex;
-        flex-direction: column;
-        /* 👈 una debajo de otra */
-        gap: 20px;
-    }
-
-    /* COBERTURAS */
-    .coberturas-container {
-        display: grid;
+    /* Meta pasa a una sola columna real de tarjetas */
+    main .meta-text .meta-items {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 14px;
     }
 
-    /* RESEÑAS (1 CARD MOBILE) */
-    .reseñas-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
+    main .meta-text .meta-items::before {
+        margin: 10px 0;
     }
 
-    /* CONTACTO */
-    .contacto-cards {
-        display: flex;
+    /* Integrantes uno debajo del otro si no entra bien */
+    .integrantes-content {
         flex-direction: column;
-        gap: 25px;
-    }
-
-    /* NAV */
-    nav {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-}
-
-@media (min-width: 768px) {
-
-    main {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    /* Meta items 2 por fila */
-    .meta-text .meta-items {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* Coberturas 2 columnas */
-    .coberturas-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* Reseñas 2 cards */
-    .reseñas-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* Contacto 2 columnas */
-    .contacto-cards {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-@media (min-width: 1024px) {
-
-    main {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        text-align: left;
         align-items: center;
     }
 
-    /* Meta items 2x2 */
-    .meta-text .meta-items {
-        grid-template-columns: repeat(2, 1fr);
+    /* Coberturas:
+       si el formato 2x2 se siente muy chico,
+       lo pasamos a una columna para que se vea bien */
+    .coberturas__grid {
+        aspect-ratio: auto;
+        max-width: 420px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 16px;
     }
 
-    /* Coberturas 3 columnas */
-    .coberturas-container {
-        grid-template-columns: repeat(3, 1fr);
+    .card {
+        min-height: 320px;
     }
 
-    /* Reseñas 3 cards */
-    .reseñas-container {
-        grid-template-columns: repeat(3, 1fr);
+    .card__inner,
+    .card__face {
+        position: absolute;
     }
 
-    /* Contacto 3 columnas */
-    .contacto-cards {
-        grid-template-columns: repeat(3, 1fr);
+    /* En una sola columna, el contenido del reverso queda siempre legible */
+    .card__content {
+        max-width: 72%;
     }
 
+    /* Reseñas */
+    .reseñas-wrapper {
+        padding: 0 28px;
+    }
+
+    .reseñas-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    /* WhatsApp flotante un poco más alto para no tocar bordes */
+    .whatsapp-float {
+        bottom: 16px;
+        right: 16px;
+    }
+}
+
+/* =========================
+   BREAKPOINT <= 480px
+   Mobile estándar
+========================= */
+@media (max-width: 480px) {
+
+    .container-1 {
+        width: min(92%, 1200px);
+    }
+
+    .menu .img-logo {
+        width: 140px;
+    }
+
+    .tittle-header .text-header h1 {
+        font-size: 2rem;
+    }
+
+    .tittle-header .text-header .eslogan {
+        font-size: 1rem;
+    }
+
+    .tittle-header .text-header .text-tittle {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .tittle-header .text-header .botton {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    main {
+        padding: 60px 0;
+    }
+
+    main .meta-img img,
+    .nosotros-img img,
+    .faq-img img {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    main .meta-text h2,
+    .nos-info h2,
+    .contacto-title,
+    .reseñas-contender .reseñas-tittle {
+        font-size: 1.8rem;
+    }
+
+    .coberturas {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .coberturas__container {
+        gap: 20px;
+    }
+
+    .coberturas__container h2 {
+        font-size: 2rem;
+    }
+
+    .coberturas__container .cober-aclaracion,
+    .coberturas__container .cober-item {
+        font-size: 0.95rem;
+    }
+
+    .card {
+        min-height: 280px;
+    }
+
+    .card__content {
+        max-width: 78%;
+    }
+
+    .card__content h3 {
+        font-size: 0.9rem;
+    }
+
+    .card__content ul {
+        font-size: 0.72rem;
+        line-height: 1.25;
+    }
+
+    .card__btn {
+        font-size: 0.72rem;
+        padding: 7px 10px;
+    }
+
+    .compañias-2 h2 {
+        font-size: 0.92rem;
+        gap: 10px;
+    }
+
+    .compañias-2 h2::before,
+    .compañias-2 h2::after {
+        max-width: 60px;
+    }
+
+    .faq-question {
+        font-size: 0.95rem;
+        padding: 14px;
+    }
+
+    .faq-answer p {
+        padding: 0 14px 16px;
+        font-size: 0.95rem;
+    }
+
+    .contacto-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .contacto-card p,
+    .contacto-card a {
+        font-size: 0.95rem;
+    }
+
+    footer {
+        padding: 22px 16px;
+    }
+
+    footer p,
+    footer a {
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================
+   BREAKPOINT <= 360px
+   Mobile chico
+========================= */
+@media (max-width: 360px) {
+
+    .tittle-header .text-header h1 {
+        font-size: 1.7rem;
+    }
+
+    .tittle-header .text-header .eslogan {
+        font-size: 0.95rem;
+    }
+
+    .tittle-header .text-header .text-tittle {
+        font-size: 0.85rem;
+    }
+
+    .card {
+        min-height: 250px;
+    }
+
+    .card__content {
+        max-width: 82%;
+    }
+
+    .whatsapp-float {
+        width: 48px;
+        height: 48px;
+    }
 }

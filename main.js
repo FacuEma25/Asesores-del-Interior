@@ -261,3 +261,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // Estado inicial
   applyState();
 })();
+
+
+
+
+/* RESPONSIVE */
+
+/* =========================================================
+   MENU MOBILE
+   - Cierra el menú al tocar un link
+   - Mejora la experiencia en pantallas chicas
+========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const menuCheckbox = document.getElementById("menu");
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    // Si existe el menú y tocan un link, cerramos el menú desplegable
+    if (menuCheckbox && navLinks.length) {
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                menuCheckbox.checked = false;
+            });
+        });
+    }
+});
