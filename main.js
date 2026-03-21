@@ -1,5 +1,5 @@
 const faqItems = document.querySelectorAll(".faq-item");
-const track = document.querySelector('.logos-track');
+// const track = document.querySelector('.logos-track');
 
 
 /* Menu transparente */
@@ -24,13 +24,13 @@ faqItems.forEach(item => {
 });
 
 /*LOGOS*/
-track.addEventListener('mouseenter', () => {
-    track.style.animationPlayState = 'paused';
-});
+// track.addEventListener('mouseenter', () => {
+//     track.style.animationPlayState = 'paused';
+// });
 
-track.addEventListener('mouseleave', () => {
-    track.style.animationPlayState = 'running';
-});
+// track.addEventListener('mouseleave', () => {
+//     track.style.animationPlayState = 'running';
+// });
 
 /* CONTADOR */
 document.addEventListener("DOMContentLoaded", () => {
@@ -264,6 +264,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+/* FORZAR CIERRE DEL MENU HAMBURGUESA EN CEL */
+document.addEventListener("DOMContentLoaded", () => {
+  const menuCheckbox = document.getElementById("menu");
+  const navLinks = document.querySelectorAll(".navbar a");
+
+  if (menuCheckbox && navLinks.length) {
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        menuCheckbox.checked = false;
+      });
+
+      // soporte extra para touch real en celular
+      link.addEventListener("touchend", () => {
+        menuCheckbox.checked = false;
+      });
+    });
+  }
+});
 
 /* RESPONSIVE */
 
