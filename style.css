@@ -1564,21 +1564,27 @@ span {
     }
 
     .coberturas__grid {
-        max-width: 560px;
-        margin-top: 10px;
+        grid-template-columns: 1fr 1fr; /* SIEMPRE 2 columnas */
+        grid-template-rows: 1fr 1fr;   /* SIEMPRE 2 filas */
+        
+        max-width: 520px; /* evita que se achique demasiado */
+        margin: 0 auto;
+        
+        gap: 0; /* importante para que forme el círculo */
     }
 
+    /* achicamos un poco el contenido interno para que no se rompa */
     .card__content h3 {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 
     .card__content ul {
-        font-size: 0.78rem;
+        font-size: 0.7rem;
     }
 
     .card__btn {
-        padding: 8px 12px;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
+        padding: 6px 10px;
     }
 
     /* Logos */
@@ -1673,17 +1679,17 @@ span {
     /* Coberturas:
        si el formato 2x2 se siente muy chico,
        lo pasamos a una columna para que se vea bien */
-    .coberturas__grid {
+    /* .coberturas__grid {
         aspect-ratio: auto;
         max-width: 420px;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         gap: 16px;
-    }
+    } */
 
-    .card {
+    /* .card {
         min-height: 320px;
-    }
+    } */
 
     .card__inner,
     .card__face {
@@ -1781,9 +1787,9 @@ span {
         font-size: 0.95rem;
     }
 
-    .card {
+    /* .card {
         min-height: 280px;
-    }
+    } */
 
     .card__content {
         max-width: 78%;
@@ -1931,3 +1937,7 @@ span {
         right: 5px;
     }
 }
+
+
+/* CORECCION 2 */
+
