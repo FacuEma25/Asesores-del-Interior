@@ -5,38 +5,61 @@ const faqItems = document.querySelectorAll(".faq-item");
 /* Menu transparente */
 
 
-/*FAQ*/
-faqItems.forEach(item => {
-    const button = item.querySelector(".faq-question");
+/* =========================================================
+   FAQ
+========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const faqItems = document.querySelectorAll(".faq-item");
 
-    button.addEventListener("click", () => {
+    if (faqItems.length) {
+        faqItems.forEach(item => {
+            const button = item.querySelector(".faq-question");
 
-        // Cierra otros abiertos
-        faqItems.forEach(el => {
-            if (el !== item) {
-                el.classList.remove("active");
-            }
+            if (!button) return;
+
+            button.addEventListener("click", () => {
+                faqItems.forEach(el => {
+                    if (el !== item) {
+                        el.classList.remove("active");
+                    }
+                });
+
+                item.classList.toggle("active");
+            });
         });
+    }
+});
 
-        // Toggle actual
-        item.classList.toggle("active");
+
+/* =========================================================
+   LOGOS
+   Pausa la animación al pasar el mouse
+========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector(".logos-track");
+
+    if (!track) return;
+
+    track.addEventListener("mouseenter", () => {
+        track.style.animationPlayState = "paused";
+    });
+
+    track.addEventListener("mouseleave", () => {
+        track.style.animationPlayState = "running";
     });
 });
 
-/*LOGOS*/
-// track.addEventListener('mouseenter', () => {
-//     track.style.animationPlayState = 'paused';
-// });
 
-// track.addEventListener('mouseleave', () => {
-//     track.style.animationPlayState = 'running';
-// });
-
-/* CONTADOR */
+/* =========================================================
+   CONTADOR
+========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
-
     const counters = document.querySelectorAll(".span-num");
-    const speed = 1000; // menor = más rápido
+    const metaSection = document.querySelector(".meta");
+
+    if (!counters.length || !metaSection) return;
+
+    const speed = 1000;
 
     const formatNumber = (num) => {
         return num.toLocaleString("es-AR");
@@ -46,11 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const target = +counter.getAttribute("data-target");
         let current = 0;
 
-        // Para números grandes que salte más rápido
         let increment;
 
         if (target > 1000000) {
-            increment = Math.ceil(target / 120); // 50 pasos aprox
+            increment = Math.ceil(target / 120);
         } else {
             increment = Math.ceil(target / speed);
         }
@@ -60,9 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (current >= target) {
                 counter.innerText = formatNumber(target);
-                if (counter.innerText && counter.innerText !== formatNumber(target)) {
-                    counter.innerText = formatNumber(target);
-                }
             } else {
                 counter.innerText = formatNumber(current);
                 requestAnimationFrame(updateCounter);
@@ -72,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateCounter();
     };
 
-    // Intersection Observer (se activa al entrar en pantalla)
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -82,22 +100,65 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, { threshold: 0.5 });
 
-    observer.observe(document.querySelector(".meta"));
-
+    observer.observe(metaSection);
 });
 
-/* FIN CONTADOR */
 
-/* OPINIONES */
+/* =========================================================
+   MENU MOBILE
+   Cierra el menú y navega correctamente
+   a la sección en celular real
+========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
+    const menuCheckbox = document.getElementById("menu");
+    const navLinks = document.querySelectorAll(".menu .navbar a[href^='#']");
+    const menuBar = document.querySelector(".menu");
 
-    const track = document.querySelector(".reseñas");
+    if (!menuCheckbox || !navLinks.length || !menuBar) return;
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            const targetId = link.getAttribute("href");
+
+            if (!targetId || targetId === "#") return;
+
+            const target = document.querySelector(targetId);
+            if (!target) return;
+
+            e.preventDefault();
+
+            menuCheckbox.checked = false;
+
+            setTimeout(() => {
+                const menuHeight = menuBar.offsetHeight;
+                const targetTop = target.getBoundingClientRect().top + window.pageYOffset - menuHeight;
+
+                window.scrollTo({
+                    top: targetTop,
+                    behavior: "smooth"
+                });
+            }, 180);
+        });
+    });
+});
+
+
+/* =========================================================
+   OPINIONES / RESEÑAS
+   Mejorado para desktop + touch real en celular
+========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const reviewTrack = document.querySelector(".reseñas");
     const cards = document.querySelectorAll(".op-container");
     const nextBtn = document.querySelector(".next");
     const prevBtn = document.querySelector(".prev");
 
+    if (!reviewTrack || !cards.length || !nextBtn || !prevBtn) return;
+
     let index = 0;
     let visibleCards = 3;
+    let isDragging = false;
+    let startX = 0;
 
     function updateVisibleCards() {
         if (window.innerWidth <= 600) {
@@ -109,75 +170,94 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function moveCarousel() {
-        const cardWidth = cards[0].offsetWidth + 30; // 30 = gap
-        track.style.transform = `translateX(-${index * cardWidth}px)`;
+    function getGap() {
+        return parseFloat(getComputedStyle(reviewTrack).gap) || 30;
     }
 
-    nextBtn.addEventListener("click", () => {
+    function moveCarousel() {
+        const cardWidth = cards[0].getBoundingClientRect().width + getGap();
+        reviewTrack.style.transform = `translate3d(-${index * cardWidth}px, 0, 0)`;
+    }
+
+    function goNext(e) {
+        if (e) e.preventDefault();
+
         if (index < cards.length - visibleCards) {
             index++;
         } else {
-            index = 0; // vuelve al inicio
+            index = 0;
         }
-        moveCarousel();
-    });
 
-    prevBtn.addEventListener("click", () => {
+        reviewTrack.style.transition = "transform 0.4s ease";
+        moveCarousel();
+    }
+
+    function goPrev(e) {
+        if (e) e.preventDefault();
+
         if (index > 0) {
             index--;
         } else {
-            index = cards.length - visibleCards; // va al final
+            index = cards.length - visibleCards;
         }
+
+        reviewTrack.style.transition = "transform 0.4s ease";
         moveCarousel();
-    });
+    }
+
+    nextBtn.addEventListener("click", goNext);
+    prevBtn.addEventListener("click", goPrev);
+
+    nextBtn.addEventListener("touchstart", goNext, { passive: false });
+    prevBtn.addEventListener("touchstart", goPrev, { passive: false });
 
     window.addEventListener("resize", () => {
         updateVisibleCards();
+
+        if (index > cards.length - visibleCards) {
+            index = Math.max(0, cards.length - visibleCards);
+        }
+
         moveCarousel();
     });
 
     updateVisibleCards();
+    moveCarousel();
 
-    /* ===== DRAG / SWIPE ===== */
-
-    let isDragging = false;
-    let startX = 0;
-    let currentTranslate = 0;
-
-    track.addEventListener("mousedown", (e) => {
+    reviewTrack.addEventListener("mousedown", (e) => {
         isDragging = true;
         startX = e.pageX;
-        track.style.transition = "none";
+        reviewTrack.style.transition = "none";
     });
 
     window.addEventListener("mouseup", () => {
         if (!isDragging) return;
         isDragging = false;
-        track.style.transition = "transform 0.4s ease";
+        reviewTrack.style.transition = "transform 0.4s ease";
         moveCarousel();
     });
 
     window.addEventListener("mousemove", (e) => {
         if (!isDragging) return;
         const move = e.pageX - startX;
-        track.style.transform = `translateX(${-index * (cards[0].offsetWidth + 30) + move}px)`;
+        const cardWidth = cards[0].getBoundingClientRect().width + getGap();
+        reviewTrack.style.transform = `translate3d(${-index * cardWidth + move}px, 0, 0)`;
     });
 
-    /* Touch */
-
-    track.addEventListener("touchstart", (e) => {
+    reviewTrack.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
         isDragging = true;
-    });
+        reviewTrack.style.transition = "none";
+    }, { passive: true });
 
-    track.addEventListener("touchmove", (e) => {
+    reviewTrack.addEventListener("touchmove", (e) => {
         if (!isDragging) return;
         const move = e.touches[0].clientX - startX;
-        track.style.transform = `translateX(${-index * (cards[0].offsetWidth + 30) + move}px)`;
-    });
+        const cardWidth = cards[0].getBoundingClientRect().width + getGap();
+        reviewTrack.style.transform = `translate3d(${-index * cardWidth + move}px, 0, 0)`;
+    }, { passive: true });
 
-    track.addEventListener("touchend", (e) => {
+    reviewTrack.addEventListener("touchend", (e) => {
         if (!isDragging) return;
         isDragging = false;
 
@@ -186,149 +266,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (diff < -50 && index < cards.length - visibleCards) {
             index++;
-        }
-
-        if (diff > 50 && index > 0) {
+        } else if (diff > 50 && index > 0) {
             index--;
         }
 
-        track.style.transition = "transform 0.4s ease";
+        reviewTrack.style.transition = "transform 0.4s ease";
         moveCarousel();
     });
-
 });
 
-/* FIN OPINIONES */
-
-/* Coberturas */
-(() => {
-  const grid = document.getElementById("coberturasGrid");
-  const cards = Array.from(grid.querySelectorAll(".card"));
-
-  let activeId = null;
-
-  const applyState = () => {
-    cards.forEach((c) => {
-      const id = c.dataset.id;
-      const isActive = activeId === id;
-      const isDim = activeId !== null && !isActive;
-
-      c.classList.toggle("is-active", isActive);
-      c.classList.toggle("is-dim", isDim);
-    });
-  };
-
-  const setActive = (id) => {
-    activeId = id;
-    applyState();
-  };
-
-  const clearActive = () => {
-    activeId = null;
-    applyState();
-  };
-
-  // Hover (desktop)
-  cards.forEach((card) => {
-    card.addEventListener("mouseenter", () => setActive(card.dataset.id));
-    card.addEventListener("focusin", () => setActive(card.dataset.id));
-  });
-
-  grid.addEventListener("mouseleave", clearActive);
-  grid.addEventListener("focusout", (e) => {
-    // si el foco se va fuera del grid, limpiamos
-    if (!grid.contains(e.relatedTarget)) clearActive();
-  });
-
-  // Click/tap (mobile): toggle
-  cards.forEach((card) => {
-    card.addEventListener("click", (e) => {
-      // Si clickea el botón, dejá navegar
-      const isBtn = e.target.closest(".card__btn");
-      if (isBtn) return;
-
-      const id = card.dataset.id;
-      activeId = activeId === id ? null : id;
-      applyState();
-    });
-  });
-
-  // Click afuera del grid: cerrar
-  document.addEventListener("click", (e) => {
-    if (!grid.contains(e.target)) clearActive();
-  });
-
-  // Estado inicial
-  applyState();
-})();
-
-
-
-/* FORZAR CIERRE DEL MENU HAMBURGUESA EN CEL */
-document.addEventListener("DOMContentLoaded", () => {
-  const menuCheckbox = document.getElementById("menu");
-  const navLinks = document.querySelectorAll(".navbar a");
-
-  if (menuCheckbox && navLinks.length) {
-    navLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        menuCheckbox.checked = false;
-      });
-
-      // soporte extra para touch real en celular
-      link.addEventListener("touchend", () => {
-        menuCheckbox.checked = false;
-      });
-    });
-  }
-});
-
-/* RESPONSIVE */
 
 /* =========================================================
-   MENU MOBILE
-   - Cierra el menú al tocar un link
-   - Mejora la experiencia en pantallas chicas
+   COBERTURAS
 ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
-    const menuCheckbox = document.getElementById("menu");
-    const navLinks = document.querySelectorAll(".navbar a");
+    const grid = document.getElementById("coberturasGrid");
+    if (!grid) return;
 
-    // Si existe el menú y tocan un link, cerramos el menú desplegable
-    if (menuCheckbox && navLinks.length) {
-        navLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                menuCheckbox.checked = false;
-            });
+    const cards = Array.from(grid.querySelectorAll(".card"));
+    if (!cards.length) return;
+
+    let activeId = null;
+
+    const applyState = () => {
+        cards.forEach((c) => {
+            const id = c.dataset.id;
+            const isActive = activeId === id;
+            const isDim = activeId !== null && !isActive;
+
+            c.classList.toggle("is-active", isActive);
+            c.classList.toggle("is-dim", isDim);
         });
-    }
-});
+    };
 
+    const setActive = (id) => {
+        activeId = id;
+        applyState();
+    };
 
+    const clearActive = () => {
+        activeId = null;
+        applyState();
+    };
 
+    cards.forEach((card) => {
+        card.addEventListener("mouseenter", () => setActive(card.dataset.id));
+        card.addEventListener("focusin", () => setActive(card.dataset.id));
+    });
 
-/* CORECCION */
+    grid.addEventListener("mouseleave", clearActive);
+    grid.addEventListener("focusout", (e) => {
+        if (!grid.contains(e.relatedTarget)) clearActive();
+    });
 
-/* =========================================
-   MENU MOBILE
-   Cierra el menú cuando tocás una sección
-========================================= */
-document.addEventListener("DOMContentLoaded", () => {
-    const menuCheckbox = document.getElementById("menu");
-    const navLinks = document.querySelectorAll(".menu .navbar a");
+    cards.forEach((card) => {
+        card.addEventListener("click", (e) => {
+            const isBtn = e.target.closest(".card__btn");
+            if (isBtn) return;
 
-    if (!menuCheckbox || !navLinks.length) return;
-
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            /* 
-               Espera un instante para que el navegador
-               haga primero la navegación a la sección
-               y recién después cierre el menú
-            */
-            setTimeout(() => {
-                menuCheckbox.checked = false;
-            }, 200);
+            const id = card.dataset.id;
+            activeId = activeId === id ? null : id;
+            applyState();
         });
     });
+
+    document.addEventListener("click", (e) => {
+        if (!grid.contains(e.target)) clearActive();
+    });
+
+    applyState();
 });
