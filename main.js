@@ -277,7 +277,68 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================================
-   COBERTURAS
+   COBERTURAS VIEJO, ESE SE ACTIVA CON HOVER PERO NO FUNCIONA BIEN EN CELULAR
+========================================================= */
+// document.addEventListener("DOMContentLoaded", () => {
+//     const grid = document.getElementById("coberturasGrid");
+//     if (!grid) return;
+
+//     const cards = Array.from(grid.querySelectorAll(".card"));
+//     if (!cards.length) return;
+
+//     let activeId = null;
+
+//     const applyState = () => {
+//         cards.forEach((c) => {
+//             const id = c.dataset.id;
+//             const isActive = activeId === id;
+//             const isDim = activeId !== null && !isActive;
+
+//             c.classList.toggle("is-active", isActive);
+//             c.classList.toggle("is-dim", isDim);
+//         });
+//     };
+
+//     const setActive = (id) => {
+//         activeId = id;
+//         applyState();
+//     };
+
+//     const clearActive = () => {
+//         activeId = null;
+//         applyState();
+//     };
+
+//     cards.forEach((card) => {
+//         card.addEventListener("mouseenter", () => setActive(card.dataset.id));
+//         card.addEventListener("focusin", () => setActive(card.dataset.id));
+//     });
+
+//     grid.addEventListener("mouseleave", clearActive);
+//     grid.addEventListener("focusout", (e) => {
+//         if (!grid.contains(e.relatedTarget)) clearActive();
+//     });
+
+//     cards.forEach((card) => {
+//         card.addEventListener("click", (e) => {
+//             const isBtn = e.target.closest(".card__btn");
+//             if (isBtn) return;
+
+//             const id = card.dataset.id;
+//             activeId = activeId === id ? null : id;
+//             applyState();
+//         });
+//     });
+
+//     document.addEventListener("click", (e) => {
+//         if (!grid.contains(e.target)) clearActive();
+//     });
+
+//     applyState();
+// });
+
+/* =========================================================
+   COBERTURAS - FIX MOBILE (1 solo tap)
 ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
     const grid = document.getElementById("coberturasGrid");
@@ -299,39 +360,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    const setActive = (id) => {
-        activeId = id;
-        applyState();
-    };
-
-    const clearActive = () => {
-        activeId = null;
-        applyState();
-    };
-
-    cards.forEach((card) => {
-        card.addEventListener("mouseenter", () => setActive(card.dataset.id));
-        card.addEventListener("focusin", () => setActive(card.dataset.id));
-    });
-
-    grid.addEventListener("mouseleave", clearActive);
-    grid.addEventListener("focusout", (e) => {
-        if (!grid.contains(e.relatedTarget)) clearActive();
-    });
-
     cards.forEach((card) => {
         card.addEventListener("click", (e) => {
             const isBtn = e.target.closest(".card__btn");
             if (isBtn) return;
 
             const id = card.dataset.id;
+
+            // toggle con un solo tap
             activeId = activeId === id ? null : id;
+
             applyState();
         });
     });
 
+    // tap afuera cierra
     document.addEventListener("click", (e) => {
-        if (!grid.contains(e.target)) clearActive();
+        if (!grid.contains(e.target)) {
+            activeId = null;
+            applyState();
+        }
     });
 
     applyState();
