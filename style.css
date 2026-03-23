@@ -421,6 +421,11 @@ main .meta-text .meta-items::before {
 
 /* NUEVAS COBERTURAS */
 
+/* Coberturas para celular, inabilitada para los demas tamaños */
+.cober-cel {
+    display: none;
+}
+
 .coberturas {
     padding: clamp(28px, 4vw, 56px) 16px;
 }
@@ -435,6 +440,16 @@ main .meta-text .meta-items::before {
     grid-template-columns: 40% 60%;
     align-items: center;
     gap: 12px;
+}
+
+.coberturas__container .cober-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.coberturas__container .cober-text-2 {
+    display: flex;
+    flex-direction: column;
 }
 
 .coberturas__container .cober-item {
@@ -1422,6 +1437,10 @@ span {
         gap: 12px;
         text-align: center;
     }
+
+    .coberturas__container .cober-text-2 {
+        align-items: center;
+    }
 }
 
 /* =========================
@@ -1564,13 +1583,17 @@ span {
     }
 
     .coberturas__grid {
-        grid-template-columns: 1fr 1fr; /* SIEMPRE 2 columnas */
-        grid-template-rows: 1fr 1fr;   /* SIEMPRE 2 filas */
-        
-        max-width: 520px; /* evita que se achique demasiado */
+        grid-template-columns: 1fr 1fr;
+        /* SIEMPRE 2 columnas */
+        grid-template-rows: 1fr 1fr;
+        /* SIEMPRE 2 filas */
+
+        max-width: 520px;
+        /* evita que se achique demasiado */
         margin: 0 auto;
-        
-        gap: 0; /* importante para que forme el círculo */
+
+        gap: 0;
+        /* importante para que forme el círculo */
     }
 
     /* achicamos un poco el contenido interno para que no se rompa */
@@ -1650,6 +1673,10 @@ span {
     .contacto-card {
         padding: 30px 22px;
         border-radius: 28px 18px;
+    }
+
+    .coberturas__container .cober-text-2 {
+        text-align: center;
     }
 }
 
@@ -1881,6 +1908,28 @@ span {
         justify-content: center;
     }
 
+    .coberturas{
+        display: none;
+    }
+
+    .cober-cel {
+        display: initial;
+    }
+
+    .cober-cel .cobertura-1{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 20px 0;
+    }
+
+    .cober-cel .cobertura-1 .cobertura-text{
+        padding: 0 16px;
+    }
+
+    .cobertura-text h2{
+        font-family: var(--font-principal);
+        font-size: 1.6rem;
+    }
 }
 
 /* =========================
@@ -1940,4 +1989,3 @@ span {
 
 
 /* CORECCION 2 */
-
