@@ -384,3 +384,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     applyState();
 });
+
+
+/* =========================================
+   MENU COBERTURAS SEGÚN DISPOSITIVO
+========================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const coberturasLink = document.querySelector(".menu-coberturas-link");
+    const menuCheckbox = document.getElementById("menu");
+    const menuBar = document.querySelector(".menu");
+
+    if (!coberturasLink) return;
+
+    coberturasLink.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // breakpoint celular
+        const isMobile = window.innerWidth <= 768;
+
+        const target = isMobile
+            ? document.getElementById("coberturas-2")
+            : document.getElementById("coberturas");
+
+        if (!target) return;
+
+        // cerrar menú si existe
+        if (menuCheckbox) {
+            menuCheckbox.checked = false;
+        }
+
+        setTimeout(() => {
+            const menuHeight = menuBar ? menuBar.offsetHeight : 0;
+            const targetTop = target.getBoundingClientRect().top + window.pageYOffset - menuHeight;
+
+            window.scrollTo({
+                top: targetTop,
+                behavior: "smooth"
+            });
+        }, 180);
+    });
+});

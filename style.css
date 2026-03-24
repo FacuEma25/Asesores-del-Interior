@@ -182,6 +182,13 @@ header {
     color: var(--claro);
 }
 
+.tittle-header .text-header img{
+    width: 600px;
+    margin-bottom: 20px;
+    display: flex;
+    margin: 0 auto;
+}
+
 .tittle-header .text-header h1 {
     font-size: 4rem;
     font-family: 'Helvetica';
@@ -1095,11 +1102,8 @@ main .meta-text .meta-items::before {
 
 .contacto-redes a:hover {
     background-color: var(--terciario);
+    color: var(--claro);
     transform: scale(1.1);
-}
-
-.contacto-card a:hover {
-    color: var(--terciario);
 }
 
 /* RESPONSIVE */
@@ -1198,6 +1202,10 @@ footer p {
 /* LOGOS PARA CEL */
 .compañias-3 {
     display: none;
+}
+
+.compañias-3 h2{
+    margin-bottom: 40px;
 }
 
 
@@ -1374,6 +1382,7 @@ span {
 
     .integrantes-content {
         justify-content: center;
+        margin-bottom: 50px;
     }
 
     /* Coberturas: texto arriba, cards abajo */
@@ -1914,6 +1923,13 @@ span {
 
     .cober-cel {
         display: initial;
+    }
+
+    .cober-cel h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        font-family: var(--font-principal);
+        margin-top: 50px;
     }
 
     .cober-cel .cobertura-1{
