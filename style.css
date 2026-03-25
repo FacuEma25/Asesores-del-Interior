@@ -1,21 +1,21 @@
 @font-face {
     font-family: 'Helvetica';
-    src: url('/Fuentes/Helvetica/Helvetica-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: bold;
+    src: url('./Fuentes/Helvetica/Helvetica-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
 }
 
 @font-face {
     font-family: 'Helvetica-R';
-    src: url('/Fuentes/Helvetica/Helvetica.woff') format('woff');
-    font-weight: normal;
+    src: url('./Fuentes/Helvetica/Helvetica.woff') format('woff');
+    font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'HND-Regular';
-    src: url('/Fuentes/Helvetica-Now-Display/HelveticaNowDisplay-Regular.ttf') format('truetype');
-    font-weight: normal;
+    src: url('./Fuentes/Helvetica-Now-Display/HelveticaNowDisplay-Regular.ttf') format('truetype');
+    font-weight: 400;
     font-style: normal;
 }
 
