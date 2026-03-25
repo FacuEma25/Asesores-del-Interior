@@ -300,6 +300,7 @@ main .meta-text .meta-items::before {
 .span-num {
     font-family: var(--font-principal);
     font-size: 3rem;
+    font-weight: 700;
     color: var(--secundario);
     font-family: var(--font-principal);
 }
