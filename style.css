@@ -1,14 +1,14 @@
 @font-face {
-    font-family: 'Helvetica';
-    src: url('./Fuentes/Helvetica/Helvetica-Bold.woff') format('woff');
-    font-weight: 700;
+    font-family: 'HelveticaCustom';
+    src: url('./Fuentes/Helvetica/Helvetica.woff') format('woff');
+    font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Helvetica-R';
-    src: url('./Fuentes/Helvetica/Helvetica.woff') format('woff');
-    font-weight: 400;
+    font-family: 'HelveticaCustom-Bold';
+    src: url('./Fuentes/Helvetica/Helvetica-Bold.woff') format('woff');
+    font-weight: 700;
     font-style: normal;
 }
 
@@ -32,9 +32,9 @@
     --header-font: "Montserrat";
     --font-general: "Poppins";
 
-    --font-principal: "Helvetica";
-    --font-secundario: "Helvetica-R";
-    --font-texto: "ND-Regular";
+    --font-principal: "HelveticaCustom-Bold";
+    --font-secundario: "HelveticaCustom";
+    --font-texto: "HND-Regular";
     --principal: #1a408c;
     --secundario: #38aec9;
     --terciario: #e4003a;
