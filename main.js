@@ -424,3 +424,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 180);
     });
 });
+
+
+/* BOTON PARA MÁS INFORMACIÓN */
+document.addEventListener("DOMContentLoaded", () => {
+    const infoBlocks = document.querySelectorAll(".integrante-info");
+
+    infoBlocks.forEach((info) => {
+        const btn = info.querySelector(".mobile-more-btn");
+        if (!btn) return;
+
+        btn.addEventListener("click", () => {
+            const isOpen = info.classList.contains("is-open");
+
+            if (isOpen) {
+                info.classList.remove("is-open");
+                btn.textContent = "Más info";
+            } else {
+                info.classList.add("is-open");
+                btn.textContent = "Ver menos";
+            }
+        });
+    });
+});
