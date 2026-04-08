@@ -456,8 +456,12 @@ main .meta-text .meta-sub {
     display: none;
 }
 
-.mobile-more-dots,
+/* .mobile-more-dots,
 .mobile-more-text {
+    display: inline;
+} */
+
+.mobile-more-dots {
     display: inline;
 }
 
@@ -1007,6 +1011,10 @@ main .meta-text .meta-sub {
 @media (max-width: 1024px) {
     .op-container {
         flex: 0 0 calc((100% - 30px) / 2);
+    }
+
+    .meta{
+        padding: 5px;
     }
 }
 
@@ -1758,6 +1766,10 @@ span {
         align-items: center;
         justify-content: center;
     }
+
+    .meta .nos-subtittle{
+        margin: 0px;
+    }
 }
 
 /* =========================
@@ -1858,6 +1870,11 @@ span {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .meta-items {
+        display: flex;
+        flex-direction: column;
     }
 }
 
