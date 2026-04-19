@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
     const counters = document.querySelectorAll(".span-num");
-    const metaSection = document.querySelector(".meta");
+    const metaSection = document.querySelector(".meta-items");
 
     if (!counters.length || !metaSection) return;
 

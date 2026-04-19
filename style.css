@@ -1,22 +1,25 @@
 @font-face {
-    font-family: 'HelveticaCustom';
+    font-family: 'Helvetica';
     src: url('./Fuentes/Helvetica/Helvetica.woff') format('woff');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'HelveticaCustom-Bold';
+    font-family: 'Helvetica';
     src: url('./Fuentes/Helvetica/Helvetica-Bold.woff') format('woff');
     font-weight: 700;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'HND-Regular';
+    font-family: 'Helvetica-Now-Display';
     src: url('./Fuentes/Helvetica-Now-Display/HelveticaNowDisplay-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 
 * {
@@ -25,16 +28,18 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: var(--principal);
+    color: var(--claro);
+    font-family: var(--font-texto);
 }
 
 :root {
-    --header-font: "Montserrat";
-    --font-general: "Poppins";
-
-    --font-principal: "HelveticaCustom-Bold";
-    --font-secundario: "HelveticaCustom";
-    --font-texto: "HND-Regular";
+    --font-principal: "Helvetica", Arial, sans-serif;
+    --font-secundario: "Helvetica", Arial, sans-serif;
+    --font-texto: "Helvetica-Now-Display", Arial, sans-serif;
     --principal: #1a408c;
     --secundario: #38aec9;
     --terciario: #e4003a;
@@ -178,8 +183,8 @@ header {
 
 .tittle-header .text-header .tittle {
     font-size: 2rem;
-    font-family: 'Helvetica-R';
-    color: var(--claro);
+    font-family: var(--font-principal);
+    font-weight: 400;
 }
 
 .tittle-header .text-header img {
@@ -189,22 +194,10 @@ header {
     margin: 0 auto;
 }
 
-.tittle-header .text-header h1 {
-    font-size: 4rem;
-    font-family: 'Helvetica';
-    color: var(--claro);
-}
-
-.tittle-header .text-header .eslogan {
-    font-size: 1.9rem;
-    font-family: 'Helvetica-R';
-    color: var(--claro);
-}
-
 .tittle-header .text-header .text-tittle {
-    font-size: 1rem;
-    font-family: 'Helvetica-R';
-    color: var(--claro);
+    font-size: 2rem;
+    font-family: var(--font-principal);
+    font-weight: 400;
 
     max-width: 70vh;
     margin: 0 auto;
@@ -220,7 +213,8 @@ header {
     background-color: var(--secundario);
     color: var(--claro);
     font-size: 1.4rem;
-    font-family: 'Helvetica-R';
+    font-family: var(--font-texto);
+    font-weight: 400;
     border-radius: 10px;
     display: inline-block;
     transition: .3s;
@@ -234,9 +228,10 @@ header {
 /*MAIN*/
 main {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    padding: 50px 0 0 0;
+    grid-template-columns: minmax(320px, 0.95fr) minmax(420px, 1.05fr);
+    align-items: center;
+    gap: 48px;
+    padding: 80px 0 20px;
 }
 
 main .meta-img {
@@ -246,21 +241,23 @@ main .meta-img {
 }
 
 main .meta-img img {
-    width: 80%;
+    width: min(100%, 560px);
 }
 
 main .meta-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
+    gap: 22px;
     color: var(--claro);
     font-family: var(--font-texto);
+    max-width: 760px;
 }
 
 main .meta-text h2 {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 4vw, 4rem);
     font-family: var(--font-principal);
+    line-height: 1.1;
 }
 
 main .meta-text .meta-sub {
@@ -297,6 +294,14 @@ main .meta-text .meta-sub {
     margin: 20px 0;
 }
 
+.nos-info p,
+.nos-info .nos-subtittle {
+    font-family: var(--font-texto);
+    font-size: 1.35rem;
+    line-height: 1.8;
+    max-width: 68ch;
+}
+
 .span-num {
     font-family: var(--font-principal);
     font-size: 3rem;
@@ -308,13 +313,6 @@ main .meta-text .meta-sub {
 .span-num:before {
     content: "+";
 }
-
-/* .meta-aclaracion p {
-    font-size: 2rem;
-    font-family: var(--font-texto);
-    color: var(--claro);
-    text-align: center;
-} */
 
 .meta-items {
     padding-bottom: 50px;
@@ -340,8 +338,6 @@ main .meta-text .meta-sub {
 
 .nos {
     position: relative;
-    /* padding: 120px 0; */
-    /* background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); */
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/portada.jpg);
     overflow: hidden;
     color: #fff;
@@ -363,6 +359,7 @@ main .meta-text .meta-sub {
     flex: 1;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .nosotros-img img {
@@ -400,6 +397,7 @@ main .meta-text .meta-sub {
     gap: 50px;
     flex-wrap: wrap;
     padding-top: 50px;
+    position: relative;
 }
 
 .integrantes-container {
@@ -434,12 +432,6 @@ main .meta-text .meta-sub {
     box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
 }
 
-.integrantes h4 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-
 .integrantes p {
     font-size: 13px;
     opacity: 0.7;
@@ -449,20 +441,40 @@ main .meta-text .meta-sub {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+}
+
+.integrante-info p {
+    font-size: 1.15rem;
+    line-height: 1.75;
+}
+
+.integrante-info h3,
+.integrante-info h4 {
+    font-size: 1.3rem;
+    line-height: 1.35;
+    font-family: var(--font-principal);
 }
 
 .mobile-more-btn {
     display: none;
 }
 
-/* .mobile-more-dots,
-.mobile-more-text {
-    display: inline;
-} */
+.integrantes h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-family: var(--font-principal);
+    padding-top: 10px;
+}
+
+.integrantes p {
+    font-size: 0.95rem;
+    opacity: 0.82;
+    font-family: var(--font-texto);
+}
 
 .mobile-more-dots {
-    display: inline;
+    display: none;
 }
 
 /* NUEVAS COBERTURAS */
@@ -475,11 +487,6 @@ main .meta-text .meta-sub {
 .coberturas {
     padding: clamp(28px, 4vw, 56px) 16px;
 }
-
-/* .coberturas__container {
-  max-width: 980px;
-  margin: 0 auto;
-} */
 
 .coberturas__container {
     display: grid;
@@ -893,7 +900,8 @@ main .meta-text .meta-sub {
     justify-content: space-between;
     align-items: center;
     color: var(--principal);
-    font-family: 'Helvetica-R';
+    font-family: var(--font-principal);
+    font-weight: 400;
 }
 
 .faq-question:hover {
@@ -996,7 +1004,7 @@ main .meta-text .meta-sub {
 }
 
 .op-sub p {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     padding-bottom: 15px;
 }
 
@@ -1013,7 +1021,7 @@ main .meta-text .meta-sub {
         flex: 0 0 calc((100% - 30px) / 2);
     }
 
-    .meta{
+    .meta {
         padding: 5px;
     }
 }
@@ -1292,6 +1300,26 @@ span {
     width: min(85%, 1200px);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-principal);
+    font-weight: 700;
+}
+
+p,
+a,
+li,
+button,
+input,
+textarea,
+span {
+    font-family: var(--font-texto);
+}
+
 /* =========================
    BREAKPOINT <= 1280px
    Ajustes suaves para laptop
@@ -1393,17 +1421,25 @@ span {
     /* META: de 2 columnas a 1 columna */
     main {
         grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 80px 0;
+        gap: 36px;
+        padding: 70px 0 10px;
     }
 
-    main .meta-img {
-        order: 1;
+    main .meta-img img {
+        width: min(100%, 620px);
     }
 
     main .meta-text {
-        order: 2;
         text-align: center;
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .meta-text p,
+    .meta-text .nos-subtittle {
+        font-size: 1.12rem;
+        line-height: 1.75;
+        max-width: 60ch;
     }
 
     main .meta-img img {
@@ -1624,7 +1660,7 @@ span {
     /* Coberturas:
        si el círculo queda muy apretado, lo dejamos más chico */
     .coberturas__container h2 {
-        font-size: 2.3rem;
+        font-size: 4rem;
     }
 
     .coberturas__container .cober-aclaracion-2 {
@@ -1632,7 +1668,7 @@ span {
     }
 
     .coberturas__container .cober-item {
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 
     .coberturas__grid {
@@ -1732,6 +1768,10 @@ span {
         text-align: center;
     }
 
+    .coberturas__container .cober-text-2 h2 {
+        font-size: 5rem;
+    }
+
     .compañias-2 {
         display: none;
     }
@@ -1767,9 +1807,10 @@ span {
         justify-content: center;
     }
 
-    .meta .nos-subtittle{
+    .meta .nos-subtittle {
         margin: 0px;
     }
+    
 }
 
 /* =========================
@@ -2167,12 +2208,13 @@ span {
 
     .integrante-info {
         text-align: left;
+        align-items: center;
     }
 
     .integrante-info p,
     .integrante-info h3,
     .integrante-info h4 {
-        font-size: 14px;
+        font-size: 18px;
         line-height: 1.5;
     }
 
