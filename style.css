@@ -336,6 +336,15 @@ main .meta-text .meta-sub {
     align-items: bottom;
 }
 
+.nosotros-img .desktop {
+    display: block;
+}
+
+.nosotros-img .mobile {
+    display: none;
+}
+
+
 .nos {
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/portada.jpg);
@@ -951,9 +960,12 @@ main .meta-text .meta-sub {
 /*RESEÑAS*/
 /* OPINION */
 .reseñas-contender {
+    display: none;
+}
+
+.reseñas-contender {
     display: flex;
     flex-direction: column;
-
     margin-bottom: 50px;
 }
 
@@ -1339,6 +1351,10 @@ span {
     font-family: var(--font-texto);
 }
 
+#reseñas-contender {
+    display: none !important;
+}
+
 /* =========================
    BREAKPOINT <= 1280px
    Ajustes suaves para laptop
@@ -1434,7 +1450,7 @@ span {
 
     .tittle-header .text-header .text-tittle {
         max-width: 680px;
-        font-size: 1rem;
+        font-size: 1.8rem;
     }
 
     /* META: de 2 columnas a 1 columna */
@@ -1549,6 +1565,14 @@ span {
         align-items: center;
     }
 
+    .nosotros-img .desktop {
+        display: none;
+    }
+
+    .nosotros-img .mobile {
+        display: block;
+    }
+
 }
 
 /* =========================
@@ -1624,7 +1648,8 @@ span {
 
     .tittle-header .text-header .text-tittle {
         max-width: 100%;
-        font-size: 0.95rem;
+        font-size: 1.5rem;
+        padding: 0 50px;
     }
 
     .tittle-header .text-header .botton {
@@ -1834,6 +1859,14 @@ span {
         margin: 0px;
     }
 
+    .nosotros-img .desktop {
+        display: none;
+    }
+
+    .nosotros-img .mobile {
+        display: block;
+    }
+
 }
 
 /* =========================
@@ -1940,6 +1973,14 @@ span {
         display: flex;
         flex-direction: column;
     }
+
+    .nosotros-img .desktop {
+        display: none;
+    }
+
+    .nosotros-img .mobile {
+        display: block;
+    }
 }
 
 /* =========================
@@ -1965,7 +2006,7 @@ span {
     }
 
     .tittle-header .text-header .text-tittle {
-        font-size: 0.9rem;
+        font-size: 1.2rem;
         line-height: 1.5;
     }
 
@@ -1983,6 +2024,14 @@ span {
     .faq-img img {
         width: 100%;
         max-width: 320px;
+    }
+
+    .nosotros-img .desktop {
+        display: none;
+    }
+
+    .nosotros-img .mobile {
+        display: block;
     }
 
     main .meta-text h2,
@@ -2132,6 +2181,10 @@ span {
     .cobertura-text h2 {
         font-family: var(--font-principal);
         font-size: 1.6rem;
+    }
+
+    .cobertura-text p {
+        margin-bottom: 8px;
     }
 }
 
