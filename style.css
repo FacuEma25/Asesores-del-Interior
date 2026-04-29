@@ -512,6 +512,7 @@ main .meta-text .meta-sub {
 .coberturas__container .cober-text-2 {
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 .coberturas__container .cober-item {
@@ -519,6 +520,11 @@ main .meta-text .meta-sub {
     color: var(--claro);
     font-size: 1.4rem;
     font-family: var(--font-secundario);
+    text-align: left;
+}
+
+.cober-aclaracion-2{
+    text-align: center;
 }
 
 .coberturas__container .cober-item:before {
@@ -1568,7 +1574,7 @@ span {
     }
 
     .coberturas__container .cober-text-2 {
-        align-items: center;
+        align-items: right;
     }
 
     .nosotros-img .desktop {
@@ -1871,6 +1877,12 @@ span {
 
     .nosotros-img .mobile {
         display: block;
+    }
+
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
 
 }
@@ -2191,6 +2203,30 @@ span {
 
     .cobertura-text p {
         margin-bottom: 8px;
+    }
+
+    .cober-text-2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cober-aclaracion-2{
+        text-align: center;
+    }
+
+    .cober-item {
+        color: var(--claro);
+        padding: 4px 10px;
+        font-size: 0.9rem;
+        font-family: var(--font-secundario);
+        text-align: left;
+    }
+
+    .cober-item:before {
+        content: "•";
+        padding-right: 6px;
+        color: white;
+        display: inline-block;
     }
 }
 
