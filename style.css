@@ -347,7 +347,7 @@ main .meta-text .meta-sub {
 
 .nos {
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/cobertura-front-1.webp);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/portada.webp);
     overflow: hidden;
     color: #fff;
 }
@@ -1201,9 +1201,10 @@ footer {
     text-align: center;
     color: var(--claro);
     display: flex;
-    padding: 30px;
+    flex-direction: column;
+    padding: 10px;
     justify-content: center;
-    gap: 50px;
+    gap: 15px;
     background-color: var(--claro);
     align-items: center;
 }
@@ -1213,6 +1214,11 @@ footer a {
     text-decoration: none;
     color: var(--principal);
     font-size: 1rem;
+}
+
+.footer-content {
+    display: flex;
+    gap: 20px;
 }
 
 /* footer i{
